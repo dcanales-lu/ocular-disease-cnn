@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  ocular-cnn:
+    build: .
+    image: ocular-cnn:latest
+    container_name: ocular-cnn
+    volumes:
+      - ./data:/app/data
+      - ./runs:/app/runs
+      - ./checkpoints:/app/checkpoints
+    ports:
+      - "6006:6006"
+    environment:
+      - EPOCHS=5
+      - BATCH_SIZE=32
+      - LR=0.001
+      - IMG_SIZE=224
+      - VAL_RATIO=0.2
+      - SEED=42
+    # Para usar GPU en Runpod o en tu máquina (si tienes Nvidia + drivers):
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: make train

@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.env
+.venv
+*.log
+
+# Jupyter / data
+.ipynb_checkpoints/
+*.sqlite
+data/
+outputs/
+runs/
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Docker
+*.pid
+*.tar
+*.bak
+
+# System
+.DS_Store
+Thumbs.db
+
+# Model checkpoints
+checkpoints/
